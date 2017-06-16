@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.8.2.min.js"></script>
+	</head>
+	<style>
+*{ padding:0; margin:0; list-style:none;}
+/************************样式区。原本都打算写到JS里面的。不过这玩意改的比较多。新手改CSS没啥问题我就写在这了*****************************************/
+/*  修改输出屏大小  */
+.banner{/*  修改输出屏大小  */ width: 550px; height: 300px; overflow: hidden; position: relative; margin-left: auto; margin-right: auto; }
+.banner .u_Ul{width: 99999px; position:absolute; left:0px; top:0;}
+.banner .u_Ul li{ float:left;}
+/*/ 修改图片大小 /*/
+.banner .u_Ul img{ width: 550px;}
+/*/ 小圆圈 /*/
+.banner .num{ position:absolute; width:100%; bottom:10px; left:0; text-align:center; font-size:0px;}
+.banner .num li{ width:10px;height:10px; background:#888; border-radius:50%; display:inline-block; margin:0 3px; cursor:pointer;}
+.banner .num li.on{ background:#F60;}
+/*/ 按钮 /*/
+.banner .btn{ width:30px; height:50px; background:rgba(0,0,0,0.5); position:absolute; top:50%; margin-top:-25px; cursor:pointer; text-align:center; line-height:50px; color:#fff; font-size:40px; font-family:"宋体"; display:none;}
+.banner:hover .btn{ display:block;}
+.banner .btn_l{ left:0;}
+.banner .btn_r{ right:0;}
+
+
+/*/ 第一个轮播 /*/
+#ban1 .banner{width: 1000px;height:500px;margin:100px auto; border:5px solid #000; }
+#ban1 .banner .u_Ul img{width: 1000px;height:500px;}
+
+
+</style>
+
+	<body>
+		<div id="ban1">
+<div class="banner">
+	<ul class="img">
+    	<li><a href="#"><img src="equipment_1.jpg"></a></li>
+        <li><a href="#"><img src="equipment_1.jpg"></a></li>
+        <!--<li><a href="#"><img src="images/3.png"></a></li>-->     
+    </ul>
+    
+    <ul class="num">    	
+    </ul>
+    
+    <div class="btn btn_l">&lt;</div>
+    <div class="btn btn_r">&gt;</div>
+
+</div>
+
+</div>
+<div id="ban2">
+<div class="banner">
+	<ul class="u_Ul">
+    	<li><a href="#"><img src="equipment_1.jpg"></a></li>
+        <li><a href="#"><img src="equipment_2.jpg"></a></li>
+        <!--<li><a href="#"><img src="images/3.png"></a></li>   
+        <li><a href="#"><img src="images/4.png"></a></li>    -->
+    </ul>
+    
+    <ul class="num">    	
+    </ul>
+    
+    <div class="btn btn_l">&lt;</div>
+    <div class="btn btn_r">&gt;</div>
+
+</div>
+
+</div>
+
+	</body>
+</html>
+<script>
+	//1个是父级名。
+$(function(){
+imgscrool('#ban1');
+imgscrool('#ban2');
+})
+
+function imgscrool(obj){
+	var width = $(obj+" .banner .u_Ul img").width();
+	var i=0;
+	var clone=$(obj+" .banner .u_Ul li").first().clone();
+	$(obj+" .banner .u_Ul").append(clone);	
+	var size=$(obj+" .banner .u_Ul li").size();	
+	for(var j=0;j<size-1;j++){
+		$(obj+" .banner .num").append("<li></li>");
+	}
+	$(obj+" .banner .num li").first().addClass("on");
+	
+	/*鼠标划入圆点*/
+	$(obj+" .banner .num li").hover(function(){
+		var index=$(this).index();
+		i=index;
+		$(obj+" .banner .u_Ul").stop().animate({left:-index*width},500)	
+		$(this).addClass("on").siblings().removeClass("on")		
+	})
+		
+	/*自动轮播*/
+	var t=setInterval(function(){
+		i++;
+		move();
+	},2000)
+		
+	/*对banner定时器的操作*/
+	$(obj+" .banner").hover(function(){
+		clearInterval(t);
+	},function(){
+		t=setInterval(function(){
+			i++;
+			move();
+		},2000)
+	})
+		
+	/*向左的按钮*/
+	$(obj+" .banner .btn_l").stop(true).delay(800).click(function(){
+		i--
+		move();	
+	})
+	
+	/*向右的按钮*/
+	$(obj+" .banner .btn_r").stop(true).delay(800).click(function(){
+		i++
+		move()				
+	})
+		
+	function move(){
+		
+		if(i==size){
+			$(obj+" .banner  .u_Ul").css({left:0})			
+			i=1;
+		}
+		
+		// 修改轮播没屏宽度
+		if(i==-1){
+			$(obj+" .banner .u_Ul").css({left:-(size-1)*width})
+			i=size-2;
+		}
+		
+		$(obj+" .banner .u_Ul").stop(true).animate({left:-i*width},500)	
+		
+		if(i==size-1){
+			$(obj+" .banner .num li").eq(0).addClass("on").siblings().removeClass("on")	
+		}else{		
+			$(obj+" .banner .num li").eq(i).addClass("on").siblings().removeClass("on")	
+		}
+	}	
+}	
+</script>

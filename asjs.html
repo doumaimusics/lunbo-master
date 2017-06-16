@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<sscript src="jquery-1.8.2.min.js"></sscript>
+	</head>
+	<style>
+		     .slider,
+        .slider-panel img,
+        .slider-extra {
+            width: 100%;
+            height: 310px;
+            .slider_1{
+                width: 260px;
+                height: 310px;
+                background: #fff;
+                float: left;
+                margin-right: 24px;
+                border-radius:3px;
+                position: relative;
+               .slider_rad{
+                   width: 160px;
+                   height: 160px;
+                   border-radius: 50%;
+                   background: #EFF2F5;
+                   margin: 44px auto; 
+                   position: relative;
+                   span{
+                       font-size: 36px;
+                       color: #4e5662;
+                       text-align: center;
+                       line-height: 160px;
+                   }
+                   i{
+                      position:absolute;
+                      left: 60px;top:115px;
+                                             width: 34px;
+                       height: 19px;
+                       display: block;
+                   background-size:39px 19px ;
+                  background: url(../images/u_boult.png) no-repeat ;
+                       
+                   }
+               } 
+               p{
+                   text-align: center;
+                   font-size: 14px;
+                   color: #666666;
+                   padding: 0 10px;
+               }
+            }
+        }
+        
+        .slider {
+            text-align: center;
+            margin: 30px auto;
+            position: relative;
+        }
+        
+        .slider-panel,
+        .slider-nav,
+        .slider-pre,
+        .slider-next {
+            position: absolute;
+            z-index: 8;
+        }
+        
+        .slider-panel {
+            position: absolute;
+        }
+        
+        .slider-panel img {
+            border: none;
+        }
+        
+        .slider-extra {
+            position: relative;
+        }
+        
+        .slider-nav {
+            margin-left: -51px;
+            position: absolute;
+            left: 50%;
+            bottom:-40px;
+        }
+        
+        .slider-nav li {
+            background: #3e3e3e;
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            margin: 0 2px;
+            overflow: hidden;
+            text-align: center;
+            display: inline-block;
+            height: 18px;
+            line-height: 18px;
+            width: 18px;
+        }
+        
+        .slider-nav .slider-item-selected {
+            background: blue;
+        }
+        
+        .slider-page a.slider-pre{
+            background:url(../images/u_L.png) no-repeat;
+            display: block;            
+            width: 22px;
+            height: 70px;            
+            margin-top: -31px;
+            position: absolute;
+            top: 50%;
+            left: -75px;
+            z-index: 10000;
+        }
+.slider-page a.slider-next  {
+            background:url(../images/u_R.png) no-repeat;         
+            display: block;            
+            width: 22px;
+            height: 70px;           
+            margin-top: -31px;
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            z-index: 10000;
+}
+	</style>
+	<body>
+					<div class="slider">
+		  	   <ul class="slider-main">
+		  		<li class="slider-panel">
+		  			<div class="slider_1">
+		  				<div class="slider_rad">
+		  					<span>BGA</span>
+		  					<i></i>
+		  				</div>
+		  				<p>BGA适用于MCM封装，能够实现MCM的高密度、高性能。</p>
+		  			</div>
+		  			<div class="slider_1">
+		  				<div class="slider_rad">
+		  					<span>QFN</span>
+		  					<i></i>
+		  				</div>
+		  				<p>一个全新的封装类型，<br>
+具有杰出的电性能和热性能。</p>
+		  			</div>
+		  			<div class="slider_1">
+		  				<div class="slider_rad">
+		  					<span>SOIC</span>
+		  					<i></i>
+		  				</div>
+		  				<p>小外形集成电路封装，<br>
+一般有宽体和窄体两种封装形式。</p>
+		  			</div>
+		  			<div class="slider_1">
+		  				<div class="slider_rad">
+		  					<span>PLCC</span>
+		  					<i></i>
+		  				</div>
+		  				<p>PLCC封装适合用SMT表面安装技术在PCB上安装布线。</p>
+		  			</div>
+		  				
+		  			
+		  		</li>
+		  		<li class="slider-panel ">
+		  					  			<div class="slider_1" style="opacity: 0;">
+		  				<div class="slider_rad">
+		  					<span>SOIC</span>
+		  					<i></i>
+		  				</div>
+		  				<p>小外形集成电路封装，<br>
+一般有宽体和窄体两种封装形式。</p>
+		  			</div>
+		  			<div class="slider_1">
+		  				<div class="slider_rad">
+		  					<span>PLCC</span>
+		  					<i></i>
+		  				</div>
+		  				<p>PLCC封装适合用SMT表面安装技术在PCB上安装布线。</p>
+		  			</div>
+		  					  					  			<div class="slider_1">
+		  				<div class="slider_rad">
+		  					<span>SOIC</span>
+		  					<i></i>
+		  				</div>
+		  				<p>小外形集成电路封装，<br>
+一般有宽体和窄体两种封装形式。</p>
+		  			</div>
+		  			<div class="slider_1" style="opacity: 0;">
+		  				<div class="slider_rad">
+		  					<span>PLCC</span>
+		  					<i></i>
+		  				</div>
+		  				<p>PLCC封装适合用SMT表面安装技术在PCB上安装布线。</p>
+		  			</div>
+		  		</li>
+		  	</ul>
+		<div class="slider-extra">
+				<ul class="slider-nav">
+					<li class="slider-item">1</li>
+					<li class="slider-item">2</li>
+					
+				</ul>
+				<div class="slider-page">
+					<a class="slider-pre" href="javascript:;;">
+						</a>
+			       <a class="slider-next" href="javascript:;;"></a>
+				</div>
+			</div>		  	
+		  </div>
+	</body>
+</html>
+<script>
+	$(document).ready(function() {
+		var length,
+			currentIndex = 0,
+			interval,
+			hasStarted = false, //是否已经开始轮播 
+			t = 3000; //轮播时间间隔 
+		length = $('.slider-panel').length;
+		//将除了第一张图片隐藏 
+		$('.slider-panel:not(:first)').hide();
+		//将第一个slider-item设为激活状态 
+		$('.slider-item:first').addClass('slider-item-selected');
+		//隐藏向前、向后翻按钮 
+//		$('.slider-page').hide();
+		//鼠标上悬时显示向前、向后翻按钮,停止滑动，鼠标离开时隐藏向前、向后翻按钮，开始滑动 
+		$('.slider-panel, .slider-pre, .slider-next').hover(function() {
+			stop();
+			$('.slider-page').show();
+		}, function() {
+//			$('.slider-page').hide();
+			start();
+		});
+		$('.slider-item').hover(function(e) {
+			stop();
+			var preIndex = $(".slider-item").filter(".slider-item-selected").index();
+			currentIndex = $(this).index();
+			play(preIndex, currentIndex);
+		}, function() {
+			start();
+		});
+		$('.slider-pre').unbind('click');
+		$('.slider-pre').bind('click', function() {
+			pre();
+		});
+		$('.slider-next').unbind('click');
+		$('.slider-next').bind('click', function() {
+			next();
+		});
+		/** 
+		 * 向前翻页 
+		 */
+		function pre() {
+			var preIndex = currentIndex;
+			currentIndex = (--currentIndex + length) % length;
+			play(preIndex, currentIndex);
+		}
+		/** 
+		 * 向后翻页 
+		 */
+		function next() {
+			var preIndex = currentIndex;
+			currentIndex = ++currentIndex % length;
+			play(preIndex, currentIndex);
+		}
+		/** 
+		 * 从preIndex页翻到currentIndex页 
+		 * preIndex 整数，翻页的起始页 
+		 * currentIndex 整数，翻到的那页 
+		 */
+		function play(preIndex, currentIndex) {
+			$('.slider-panel').eq(preIndex).fadeOut(500)
+				.parent().children().eq(currentIndex).fadeIn(1000);
+			$('.slider-item').removeClass('slider-item-selected');
+			$('.slider-item').eq(currentIndex).addClass('slider-item-selected');
+		}
+		/** 
+		 * 开始轮播 
+		 */
+		function start() {
+			if (!hasStarted) {
+				hasStarted = true;
+				interval = setInterval(next, t);
+			}
+		}
+		/** 
+		 * 停止轮播 
+		 */
+		function stop() {
+			clearInterval(interval);
+			hasStarted = false;
+		}
+		//开始轮播 
+		start();
+	});
+</script>
